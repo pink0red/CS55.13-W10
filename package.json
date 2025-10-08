@@ -32,6 +32,8 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "15.1.6",
+    "@types/bunyan": "^1.8.11",
+    "@types/mysql": "^2.15.27",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.1.6",
     "eslint-config-prettier": "^9.1.0",
