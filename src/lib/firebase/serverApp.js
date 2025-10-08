@@ -2,10 +2,10 @@
 // https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns#keeping-server-only-code-out-of-the-client-environment
 import "server-only";
 
-import { cookies } from "next/headers";
-import { initializeServerApp, initializeApp } from "firebase/app";
+import { cookies } from "next/headers";   // Import the `cookies` API from Next.js to access HTTP cookies on the server.
+import { initializeServerApp, initializeApp } from "firebase/app";  // Import `initializeServerApp` (for SSR) and `initializeApp` (general Firebase app initialization)
 
-import { getAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth";  // Import Firebase Auth methods for server-side authentication
 
 // Returns an authenticated client SDK instance for use in Server Side Rendering
 // and Static Site Generation
@@ -23,8 +23,8 @@ export async function getAuthenticatedAppForUser() {
     }
   );
 
-  const auth = getAuth(firebaseServerApp);
-  await auth.authStateReady();
+  const auth = getAuth(firebaseServerApp);    // Retrieve the Auth instance from the server-side app
+  await auth.authStateReady();    // Wait for Firebase Auth to finish processing the auth state (i.e., determine current user)
 
   return { firebaseServerApp, currentUser: auth.currentUser };
 }
