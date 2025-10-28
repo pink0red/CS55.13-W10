@@ -1,6 +1,7 @@
 {
   "projects": {
-    "friendlyeats-codelab": "cs55-13-w7"
+    "friendlyeats-codelab": "cs55-13-w7",
+    "starship": "cs55-13-w10"
   },
   "targets": {},
   "etags": {}
