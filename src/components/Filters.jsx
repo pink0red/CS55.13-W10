@@ -1,4 +1,4 @@
-// The filters shown on the restaurant listings page
+// The filters shown on the starship listings page
 
 import Tag from "@/src/components/Tag.jsx";
 
@@ -38,7 +38,7 @@ export default function Filters({ filters, setFilters }) {
         <summary>
           <img src="/filter.svg" alt="filter" />
           <div>
-            <p>Restaurants</p>
+            <p>Starships</p>
             <p>Sorted by {filters.sort || "Rating"}</p>
           </div>
         </summary>
@@ -54,19 +54,20 @@ export default function Filters({ filters, setFilters }) {
             label="Category"
             options={[
               "",
-              "Italian",
-              "Chinese",
-              "Japanese",
-              "Mexican",
-              "Indian",
-              "Mediterranean",
-              "Caribbean",
-              "Cajun",
-              "German",
-              "Russian",
-              "Cuban",
-              "Organic",
-              "Tapas",
+              "Cruiser",
+              "Destroyer",
+              "Freighter",
+              "Fighter",
+              "Dreadnought",
+              "Scout",
+              "Carrier",
+              "Explorer",
+              "Battleship",
+              "Corvette",
+              "Frigate",
+              "Interceptor",
+              "Transport",
+              "Research Vessel",
             ]}
             value={filters.category}
             onChange={(event) => handleSelectionChange(event, "category")}
@@ -75,20 +76,29 @@ export default function Filters({ filters, setFilters }) {
           />
 
           <FilterSelect
-            label="City"
+            label="Manufacturer"
             options={[
               "",
-              "New York",
-              "Los Angeles",
-              "London",
-              "Paris",
-              "Tokyo",
-              "Mumbai",
-              "Dubai",
-              "Amsterdam",
-              "Seoul",
-              "Singapore",
-              "Istanbul",
+              "Weyland-Yutani Corp",
+              "Tyrell Industries",
+              "Starfleet",
+              "Martian Congressional Republic",
+              "Blue Sun Corporation",
+              "Cerberus",
+              "Nerv",
+              "InGen",
+              "Umbrella Corporation",
+              "Aperture Science",
+              "Vault-Tec",
+              "Hyperion Corporation",
+              "Encom",
+              "Omni Consumer Products",
+              "Genetics General",
+              "Stellar Dynamics",
+              "Quantum Shipyards",
+              "Nova Industries",
+              "Titan Fleetworks",
+              "Orbital Manufacturing",
             ]}
             value={filters.city}
             onChange={(event) => handleSelectionChange(event, "city")}
@@ -97,8 +107,8 @@ export default function Filters({ filters, setFilters }) {
           />
 
           <FilterSelect
-            label="Price"
-            options={["", "$", "$$", "$$$", "$$$$"]}
+            label="Production Cost"
+            options={["", "₡", "₡₡", "₡₡₡", "₡₡₡₡"]}
             value={filters.price}
             onChange={(event) => handleSelectionChange(event, "price")}
             name="price"

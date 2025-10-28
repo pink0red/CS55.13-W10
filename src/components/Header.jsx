@@ -15,7 +15,7 @@ import {
 } from "@/src/lib/firebase/auth.js";
 
 // Import Firestore function to populate database with fake data
-import { addFakeRestaurantsAndReviews } from "@/src/lib/firebase/firestore.js";
+import { addFakeStarshipsAndReviews } from "@/src/lib/firebase/firestore.js";
 
 // Import cookie helper functions to manage session cookies
 import { setCookie, deleteCookie } from "cookies-next";
@@ -68,8 +68,8 @@ export default function Header({ initialUser }) {
   return (
     <header>
       <Link href="/" className="logo">
-        <img src="/friendly-eats.svg" alt="FriendlyEats" />
-        Friendly Eats
+        <img src="/friendly-eats.svg" alt="StarshipRegistry" />
+        Starship Registry
       </Link>
       {user ? (
         <>
@@ -89,8 +89,8 @@ export default function Header({ initialUser }) {
                 <li>{user.displayName}</li>
 
                 <li>
-                  <a href="#" onClick={addFakeRestaurantsAndReviews}>
-                    Add sample restaurants
+                  <a href="#" onClick={addFakeStarshipsAndReviews}>
+                    Add sample starships
                   </a>
                 </li>
 

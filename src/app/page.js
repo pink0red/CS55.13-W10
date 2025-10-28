@@ -1,8 +1,8 @@
-// Import the RestaurantListings React component, which displays the list of restaurants
-import RestaurantListings from "@/src/components/RestaurantListings.jsx";
+// Import the StarshipListings React component, which displays the list of starships
+import StarshipListings from "@/src/components/StarshipListings.jsx";
 
-// Import the getRestaurants function used to fetch restaurant data from Firestore
-import { getRestaurants } from "@/src/lib/firebase/firestore.js";
+// Import the getStarships function used to fetch starship data from Firestore
+import { getStarships } from "@/src/lib/firebase/firestore.js";
 
 // Import a utility to initialize a Firebase Admin SDK app for the currently authenticated user
 import { getAuthenticatedAppForUser } from "@/src/lib/firebase/serverApp.js";
@@ -23,17 +23,17 @@ export default async function Home(props) {
   // ?city=London&category=Indian&sort=Review
   const { firebaseServerApp } = await getAuthenticatedAppForUser();
   
-  // Use the authenticated Firestore instance to fetch restaurants based on the searchParams
-  const restaurants = await getRestaurants(
+  // Use the authenticated Firestore instance to fetch starships based on the searchParams
+  const starships = await getStarships(
     getFirestore(firebaseServerApp),
     searchParams
   );
 
-  // Render the main page content with the list of restaurants and search parameters
+  // Render the main page content with the list of starships and search parameters
   return (
     <main className="main__home">
-      <RestaurantListings
-        initialRestaurants={restaurants}
+      <StarshipListings
+        initialStarships={starships}
         searchParams={searchParams}
       />
     </main>

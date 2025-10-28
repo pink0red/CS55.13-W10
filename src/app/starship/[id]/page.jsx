@@ -1,6 +1,6 @@
-import Restaurant from "@/src/components/Restaurant.jsx";
+import Starship from "@/src/components/Starship.jsx";
 import { Suspense } from "react";
-import { getRestaurantById } from "@/src/lib/firebase/firestore.js";
+import { getStarshipById } from "@/src/lib/firebase/firestore.js";
 import {
   getAuthenticatedAppForUser,
   getAuthenticatedAppForUser as getUser,
@@ -21,27 +21,28 @@ export default async function Home(props) {
   const params = await props.params;
   const { currentUser } = await getUser();
   const { firebaseServerApp } = await getAuthenticatedAppForUser();
-  const restaurant = await getRestaurantById(
+  const starship = await getStarshipById(
     getFirestore(firebaseServerApp),
     params.id
   );
 
   return (
     <main className="main__restaurant">
-      <Restaurant
+      <Starship
         id={params.id}
-        initialRestaurant={restaurant}
+        initialStarship={starship}
         initialUserId={currentUser?.uid || ""}
       >
         <Suspense fallback={<GeminiSummarySkeleton />}>
-          <GeminiSummary restaurantId={params.id} />
+          <GeminiSummary starshipId={params.id} />
         </Suspense>
-      </Restaurant>
+      </Starship>
       <Suspense
-        fallback={<ReviewsListSkeleton numReviews={restaurant.numRatings} />}
+        fallback={<ReviewsListSkeleton numReviews={starship.numRatings} />}
       >
-        <ReviewsList restaurantId={params.id} userId={currentUser?.uid || ""} />
+        <ReviewsList starshipId={params.id} userId={currentUser?.uid || ""} />
       </Suspense>
     </main>
   );
 }
+

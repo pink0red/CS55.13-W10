@@ -1,5 +1,5 @@
-// Import function to generate fake data for restaurants and reviews
-import { generateFakeRestaurantsAndReviews } from "@/src/lib/fakeRestaurants.js";
+// Import function to generate fake data for starships and reviews
+import { generateFakeStarshipsAndReviews } from "@/src/lib/fakeStarships.js";
 
 // Import Firestore functions for querying and manipulating data
 import {
@@ -21,26 +21,26 @@ import {
 // Import the initialized Firestore instance from the client app
 import { db } from "@/src/lib/firebase/clientApp";
 
-// Updates the `photo` field of a specific restaurant document.
-export async function updateRestaurantImageReference(
-  restaurantId,
+// Updates the `photo` field of a specific starship document.
+export async function updateStarshipImageReference(
+  starshipId,
   publicImageUrl
 ) {
-  const restaurantRef = doc(collection(db, "restaurants"), restaurantId);
-  if (restaurantRef) {
-    await updateDoc(restaurantRef, { photo: publicImageUrl });
+  const starshipRef = doc(collection(db, "starships"), starshipId);
+  if (starshipRef) {
+    await updateDoc(starshipRef, { photo: publicImageUrl });
   }
 }
 
-// Function for updating restaurant rating
+// Function for updating starship rating
 const updateWithRating = async (
   transaction,
   docRef,
   newRatingDocument,
   review
 ) => {
-  const restaurant = await transaction.get(docRef);
-  const data = restaurant.data();
+  const starship = await transaction.get(docRef);
+  const data = starship.data();
   const newNumRatings = data?.numRatings ? data.numRatings + 1 : 1;
   const newSumRating = (data?.sumRating || 0) + Number(review.rating);
   const newAverage = newSumRating / newNumRatings;
@@ -58,10 +58,10 @@ const updateWithRating = async (
 };
 
 
-// Add a review to a restaurant
-export async function addReviewToRestaurant(db, restaurantId, review) {
-        if (!restaurantId) {
-                throw new Error("No restaurant ID has been provided.");
+// Add a review to a starship
+export async function addReviewToStarship(db, starshipId, review) {
+        if (!starshipId) {
+                throw new Error("No starship ID has been provided.");
         }
 
         if (!review) {
@@ -69,9 +69,9 @@ export async function addReviewToRestaurant(db, restaurantId, review) {
         }
 
         try {
-                const docRef = doc(collection(db, "restaurants"), restaurantId);
+                const docRef = doc(collection(db, "starships"), starshipId);
                 const newRatingDocument = doc(
-                        collection(db, `restaurants/${restaurantId}/ratings`)
+                        collection(db, `starships/${starshipId}/ratings`)
                 );
 
                 // corrected line
@@ -80,7 +80,7 @@ export async function addReviewToRestaurant(db, restaurantId, review) {
                 );
         } catch (error) {
                 console.error(
-                        "There was an error adding the rating to the restaurant",
+                        "There was an error adding the rating to the starship",
                         error
                 );
                 throw error;
@@ -108,9 +108,9 @@ function applyQueryFilters(q, { category, city, price, sort }) {
   return q;
 }
 
-// Fetches all restaurants from Firestore, applying filters if provided.
-export async function getRestaurants(db = db, filters = {}) {
-  let q = query(collection(db, "restaurants"));
+// Fetches all starships from Firestore, applying filters if provided.
+export async function getStarships(db = db, filters = {}) {
+  let q = query(collection(db, "starships"));
 
   q = applyQueryFilters(q, filters);
   const results = await getDocs(q);
@@ -124,14 +124,14 @@ export async function getRestaurants(db = db, filters = {}) {
   });
 }
 
-// Subscribes to real-time updates on the restaurants collection.
-export function getRestaurantsSnapshot(cb, filters = {}) {
+// Subscribes to real-time updates on the starships collection.
+export function getStarshipsSnapshot(cb, filters = {}) {
   if (typeof cb !== "function") {
     console.log("Error: The callback parameter is not a function");
     return;
   }
 
-  let q = query(collection(db, "restaurants"));
+  let q = query(collection(db, "starships"));
   q = applyQueryFilters(q, filters);
 
   return onSnapshot(q, (querySnapshot) => {
@@ -148,13 +148,13 @@ export function getRestaurantsSnapshot(cb, filters = {}) {
   });
 }
 
-// Fetches a single restaurant document by ID.
-export async function getRestaurantById(db, restaurantId) {
-  if (!restaurantId) {
-    console.log("Error: Invalid ID received: ", restaurantId);
+// Fetches a single starship document by ID.
+export async function getStarshipById(db, starshipId) {
+  if (!starshipId) {
+    console.log("Error: Invalid ID received: ", starshipId);
     return;
   }
-  const docRef = doc(db, "restaurants", restaurantId);
+  const docRef = doc(db, "starships", starshipId);
   const docSnap = await getDoc(docRef);
   return {
     ...docSnap.data(),
@@ -162,20 +162,20 @@ export async function getRestaurantById(db, restaurantId) {
   };
 }
 
-// Placeholder for real-time snapshot of a single restaurant document.
-export function getRestaurantSnapshotById(restaurantId, cb) {
+// Placeholder for real-time snapshot of a single starship document.
+export function getStarshipSnapshotById(starshipId, cb) {
   return;
 }
 
-// Fetches all reviews (ratings) for a specific restaurant.
-export async function getReviewsByRestaurantId(db, restaurantId) {
-  if (!restaurantId) {
-    console.log("Error: Invalid restaurantId received: ", restaurantId);
+// Fetches all reviews (ratings) for a specific starship.
+export async function getReviewsByStarshipId(db, starshipId) {
+  if (!starshipId) {
+    console.log("Error: Invalid starshipId received: ", starshipId);
     return;
   }
 
   const q = query(
-    collection(db, "restaurants", restaurantId, "ratings"),
+    collection(db, "starships", starshipId, "ratings"),
     orderBy("timestamp", "desc")
   );
 
@@ -190,15 +190,15 @@ export async function getReviewsByRestaurantId(db, restaurantId) {
   });
 }
 
-// Subscribes to real-time updates on reviews for a specific restaurant.
-export function getReviewsSnapshotByRestaurantId(restaurantId, cb) {
-  if (!restaurantId) {
-    console.log("Error: Invalid restaurantId received: ", restaurantId);
+// Subscribes to real-time updates on reviews for a specific starship.
+export function getReviewsSnapshotByStarshipId(starshipId, cb) {
+  if (!starshipId) {
+    console.log("Error: Invalid starshipId received: ", starshipId);
     return;
   }
 
   const q = query(
-    collection(db, "restaurants", restaurantId, "ratings"),
+    collection(db, "starships", starshipId, "ratings"),
     orderBy("timestamp", "desc")
   );
   return onSnapshot(q, (querySnapshot) => {
@@ -214,19 +214,19 @@ export function getReviewsSnapshotByRestaurantId(restaurantId, cb) {
   });
 }
 
-// Adds sample (fake) restaurants and their associated reviews to Firestore.
-export async function addFakeRestaurantsAndReviews() {
-  const data = await generateFakeRestaurantsAndReviews();
-  for (const { restaurantData, ratingsData } of data) {
+// Adds sample (fake) starships and their associated reviews to Firestore.
+export async function addFakeStarshipsAndReviews() {
+  const data = await generateFakeStarshipsAndReviews();
+  for (const { starshipData, ratingsData } of data) {
     try {
       const docRef = await addDoc(
-        collection(db, "restaurants"),
-        restaurantData
+        collection(db, "starships"),
+        starshipData
       );
 
       for (const ratingData of ratingsData) {
         await addDoc(
-          collection(db, "restaurants", docRef.id, "ratings"),
+          collection(db, "starships", docRef.id, "ratings"),
           ratingData
         );
       }
