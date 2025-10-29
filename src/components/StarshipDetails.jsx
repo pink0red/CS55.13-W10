@@ -12,8 +12,9 @@ const StarshipDetails = ({
   children,
 }) => {
   return (
-    <section className="img__section">
-      <img src={starship.photo} alt={starship.name} />
+    <section className="hero">
+      <img className="hero__image" src={starship.photo} alt={starship.name} />
+      <div className="hero__overlay"></div>
 
       <div className="actions">
         {userId && (

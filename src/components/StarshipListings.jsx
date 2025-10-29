@@ -11,32 +11,18 @@ import { getStarshipsSnapshot } from "@/src/lib/firebase/firestore.js";
 import Filters from "@/src/components/Filters.jsx";
 
 const StarshipItem = ({ starship }) => (
-  <li key={starship.id}>
+  <li key={starship.id} className="card">
     <Link href={`/starship/${starship.id}`}>
-      <ActiveStarship starship={starship} />
+      <div className="card__image">
+        <img src={starship.photo} alt={starship.name} />
+      </div>
+      <div className="card__body">
+        <h2>{starship.name}</h2>
+        <StarshipRating starship={starship} />
+        <StarshipMetadata starship={starship} />
+      </div>
     </Link>
   </li>
-);
-
-const ActiveStarship = ({ starship }) => (
-  <div>
-    <ImageCover photo={starship.photo} name={starship.name} />
-    <StarshipDetails starship={starship} />
-  </div>
-);
-
-const ImageCover = ({ photo, name }) => (
-  <div className="image-cover">
-    <img src={photo} alt={name} />
-  </div>
-);
-
-const StarshipDetails = ({ starship }) => (
-  <div className="restaurant__details">
-    <h2>{starship.name}</h2>
-    <StarshipRating starship={starship} />
-    <StarshipMetadata starship={starship} />
-  </div>
 );
 
 const StarshipRating = ({ starship }) => (
