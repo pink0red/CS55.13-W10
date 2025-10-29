@@ -16,6 +16,26 @@ const StarshipDetails = ({
       <img className="hero__image" src={starship.photo} alt={starship.name} />
       <div className="hero__overlay"></div>
 
+      
+
+      <div className="details__container">
+        <div className="details">
+          <h2>{starship.name}</h2>
+
+          <div className="restaurant__rating">
+            <ul>{renderStars(starship.avgRating)}</ul>
+
+            <span>({starship.numRatings})</span>
+          </div>
+
+          <p>
+            {starship.category} | {starship.city}
+          </p>
+          <p>{"₡".repeat(starship.price)}</p>
+          {children}
+        </div>
+      </div>
+
       <div className="actions">
         {userId && (
           <img
@@ -41,24 +61,6 @@ const StarshipDetails = ({
 
           <img className="add-image" src="/add.svg" alt="Add image" />
         </label>
-      </div>
-
-      <div className="details__container">
-        <div className="details">
-          <h2>{starship.name}</h2>
-
-          <div className="restaurant__rating">
-            <ul>{renderStars(starship.avgRating)}</ul>
-
-            <span>({starship.numRatings})</span>
-          </div>
-
-          <p>
-            {starship.category} | {starship.city}
-          </p>
-          <p>{"₡".repeat(starship.price)}</p>
-          {children}
-        </div>
       </div>
     </section>
   );
