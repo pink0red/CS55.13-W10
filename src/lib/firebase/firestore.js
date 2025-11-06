@@ -89,12 +89,12 @@ export async function addReviewToStarship(db, starshipId, review) {
 
 
 // Applies Firestore query filters based on user-selected search params.
-function applyQueryFilters(q, { shipclass, city, price, sort }) {
+function applyQueryFilters(q, { shipclass, manufacturer, price, sort }) {
   if (shipclass) {
     q = query(q, where("shipclass", "==", shipclass));
   }
-  if (city) {
-    q = query(q, where("city", "==", city));
+  if (manufacturer) {
+    q = query(q, where("manufacturer", "==", manufacturer));
   }
   if (price) {
     q = query(q, where("price", "==", price.length));

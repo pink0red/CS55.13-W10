@@ -100,9 +100,9 @@ export default function Filters({ filters, setFilters }) {
               "Titan Fleetworks",
               "Orbital Manufacturing",
             ]}
-            value={filters.city}
-            onChange={(event) => handleSelectionChange(event, "city")}
-            name="city"
+            value={filters.manufacturer}
+            onChange={(event) => handleSelectionChange(event, "manufacturer")}
+            name="manufacturer"
             icon="/manufacturer.svg"
           />
 
@@ -131,7 +131,7 @@ export default function Filters({ filters, setFilters }) {
                 type="reset"
                 onClick={() => {
                   setFilters({
-                    city: "",
+                    manufacturer: "",
                     shipclass: "",
                     price: "",
                     sort: "",

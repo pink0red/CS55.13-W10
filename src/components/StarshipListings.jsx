@@ -26,16 +26,16 @@ const StarshipItem = ({ starship }) => (
 );
 
 const StarshipRating = ({ starship }) => (
-  <div className="restaurant__rating">
+  <div className="starship__rating">
     <ul>{renderStars(starship.avgRating)}</ul>
     <span>({starship.numRatings})</span>
   </div>
 );
 
 const StarshipMetadata = ({ starship }) => (
-  <div className="restaurant__meta">
+  <div className="starship__meta">
     <p>
-      {starship.shipclass} | {starship.city}
+      {starship.shipclass} | {starship.manufacturer}
     </p>
     <p>{"₡".repeat(starship.price)}</p>
   </div>
@@ -49,7 +49,7 @@ export default function StarshipListings({
 
   // The initial filters are the search params from the URL, useful for when the user refreshes the page
   const initialFilters = {
-    city: searchParams.city || "",
+    manufacturer: searchParams.manufacturer || "",
     shipclass: searchParams.shipclass || "",
     price: searchParams.price || "",
     sort: searchParams.sort || "",
@@ -71,7 +71,7 @@ export default function StarshipListings({
   return (
     <article>
       <Filters filters={filters} setFilters={setFilters} />
-      <ul className="restaurants">
+      <ul className="starships">
         {starships.map((starship) => (
           <StarshipItem key={starship.id} starship={starship} />
         ))}

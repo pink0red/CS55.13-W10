@@ -22,14 +22,14 @@ const StarshipDetails = ({
         <div className="details">
           <h2>{starship.name}</h2>
 
-          <div className="restaurant__rating">
+          <div className="starship__rating">
             <ul>{renderStars(starship.avgRating)}</ul>
 
             <span>({starship.numRatings})</span>
           </div>
 
           <p>
-            {starship.shipclass} | {starship.city}
+            {starship.shipclass} | {starship.manufacturer}
           </p>
           <p>{"₡".repeat(starship.price)}</p>
           {children}

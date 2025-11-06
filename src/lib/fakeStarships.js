@@ -74,7 +74,7 @@ export async function generateFakeStarshipsAndReviews() {
         randomNumberBetween(0, randomData.starshipNames.length - 1)
       ],
       avgRating,
-      city: randomData.starshipManufacturers[
+      manufacturer: randomData.starshipManufacturers[
         randomNumberBetween(0, randomData.starshipManufacturers.length - 1)
       ],
       numRatings: ratingsData.length,

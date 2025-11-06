@@ -37,7 +37,7 @@ export async function GeminiSummary({ starshipId }) {
     const { text } = await ai.generate(prompt);
 
     return (
-      <div className="restaurant__review_summary">
+      <div className="starship__review_summary">
         <p>{text}</p>
         <p>✨ Summarized with Gemini</p>
       </div>
@@ -51,7 +51,7 @@ export async function GeminiSummary({ starshipId }) {
 
 export function GeminiSummarySkeleton() {
   return (
-    <div className="restaurant__review_summary">
+    <div className="starship__review_summary">
       <p>✨ Summarizing reviews with Gemini...</p>
     </div>
   );

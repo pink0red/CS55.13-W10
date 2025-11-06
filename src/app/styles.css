@@ -175,8 +175,8 @@ header {
 .menu ul {
   /* display: block; */
   left: calc(-220px * 0.9);
-  color: rgb(42 72 101);
-  background-color: white;
+  color: rgb(0, 255, 76);
+  background-color: rgb(60, 255, 0);
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 50%);
 
   & li {
@@ -220,7 +220,7 @@ header {
 
 .main__home { background: transparent; min-height: 100vh; }
 
-.main__restaurant { background: transparent; min-height: 90vh; }
+.main__starship { background: transparent; min-height: 90vh; }
 
 article { margin: 0 auto; background: transparent; padding: 20px 40px; }
 
@@ -228,7 +228,7 @@ article {
   width: 75%;
 }
 
-.restaurants {
+.starships {
   display: grid;
   margin-top: 20px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -263,7 +263,7 @@ a {
   text-decoration: none;
 }
 
-.restaurant__meta {
+.starship__meta {
   display: flex;
   font-weight: 500;
   justify-content: space-between;
@@ -271,11 +271,11 @@ a {
   margin-bottom: 10px;
 }
 
-.restaurant__details {
+.starship__details {
   padding: 20px;
 }
 
-.restaurant__rating {
+.starship__rating {
   padding: 5px 0;
   display: flex;
   align-items: center;
@@ -289,7 +289,7 @@ a {
   & span { color: rgba(230,230,240,.7); margin-left: 8px; }
 }
 
-.restaurant__review_summary {
+.starship__review_summary {
   max-width: "50vw";
   height: "75px";
   padding-top: "10px";
