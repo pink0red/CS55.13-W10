@@ -29,7 +29,7 @@ const StarshipDetails = ({
           </div>
 
           <p>
-            {starship.category} | {starship.city}
+            {starship.shipclass} | {starship.city}
           </p>
           <p>{"₡".repeat(starship.price)}</p>
           {children}

@@ -5,7 +5,7 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "category",
+          "fieldPath": "shipclass",
           "order": "ASCENDING"
         },
         {
@@ -19,7 +19,7 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "category",
+          "fieldPath": "shipclass",
           "order": "ASCENDING"
         },
         {
@@ -33,7 +33,7 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "category",
+          "fieldPath": "shipclass",
           "order": "ASCENDING"
         },
         {

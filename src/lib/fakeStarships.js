@@ -69,7 +69,7 @@ export async function generateFakeStarshipsAndReviews() {
     const imageNumber = randomNumberBetween(range[0], range[1]);
 
     const starshipData = {
-      category: shipClass,
+      shipclass: shipClass,
       name: randomData.starshipNames[
         randomNumberBetween(0, randomData.starshipNames.length - 1)
       ],

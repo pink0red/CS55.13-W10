@@ -20,7 +20,7 @@ export default async function Home(props) {
   // Extract search parameters from props (provided by Next.js via the URL query string)
   const searchParams = await props.searchParams;
   // Using seachParams which Next.js provides, allows the filtering to happen on the server-side, for example:
-  // ?city=London&category=Indian&sort=Review
+  // ?city=London&shipclass=Indian&sort=Review
   const { firebaseServerApp } = await getAuthenticatedAppForUser();
   
   // Use the authenticated Firestore instance to fetch starships based on the searchParams

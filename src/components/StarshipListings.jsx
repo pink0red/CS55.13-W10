@@ -35,7 +35,7 @@ const StarshipRating = ({ starship }) => (
 const StarshipMetadata = ({ starship }) => (
   <div className="restaurant__meta">
     <p>
-      {starship.category} | {starship.city}
+      {starship.shipclass} | {starship.city}
     </p>
     <p>{"₡".repeat(starship.price)}</p>
   </div>
@@ -50,7 +50,7 @@ export default function StarshipListings({
   // The initial filters are the search params from the URL, useful for when the user refreshes the page
   const initialFilters = {
     city: searchParams.city || "",
-    category: searchParams.category || "",
+    shipclass: searchParams.shipclass || "",
     price: searchParams.price || "",
     sort: searchParams.sort || "",
   };

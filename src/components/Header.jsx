@@ -68,7 +68,7 @@ export default function Header({ initialUser }) {
   return (
     <header>
       <Link href="/" className="logo">
-        <img src="/friendly-eats.svg" alt="StarshipRegistry" />
+        <img src="/starship-registry.svg" alt="StarshipRegistry" />
         Starship Registry
       </Link>
       {user ? (
