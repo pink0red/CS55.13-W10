@@ -51,7 +51,7 @@ export default function Filters({ filters, setFilters }) {
           }}
         >
           <FilterSelect
-            label="Category"
+            label="Starship Class"
             options={[
               "",
               "Cruiser",
@@ -69,10 +69,10 @@ export default function Filters({ filters, setFilters }) {
               "Transport",
               "Research Vessel",
             ]}
-            value={filters.category}
-            onChange={(event) => handleSelectionChange(event, "category")}
-            name="category"
-            icon="/food.svg"
+            value={filters.shipclass}
+            onChange={(event) => handleSelectionChange(event, "shipclass")}
+            name="shipclass"
+            icon="/starship-class.svg"
           />
 
           <FilterSelect
@@ -103,7 +103,7 @@ export default function Filters({ filters, setFilters }) {
             value={filters.city}
             onChange={(event) => handleSelectionChange(event, "city")}
             name="city"
-            icon="/location.svg"
+            icon="/manufacturer.svg"
           />
 
           <FilterSelect
@@ -132,7 +132,7 @@ export default function Filters({ filters, setFilters }) {
                 onClick={() => {
                   setFilters({
                     city: "",
-                    category: "",
+                    shipclass: "",
                     price: "",
                     sort: "",
                   });

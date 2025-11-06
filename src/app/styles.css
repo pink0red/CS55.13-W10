@@ -463,9 +463,9 @@ a {
 }
 
 .filter-menu {
-  background-color: white;
+  background-color: rgb(0, 0, 0);
   border-radius: 3px;
-  border-bottom: 1px solid rgb(27 58 87);
+  border-bottom: 1px solid rgb(123, 255, 0);
 
   & summary {
     font-weight: bold;
